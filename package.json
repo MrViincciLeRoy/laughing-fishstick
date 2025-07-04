@@ -2,6 +2,7 @@
   "name": "github-actions-react-test",
   "version": "1.0.0",
   "private": true,
+  "homepage": "https://mrviinccileroy.github.io/laughing-fishstick",
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -12,7 +13,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "test:ci": "react-scripts test --coverage --ci --watchAll=false"
+    "test:ci": "react-scripts test --coverage --ci --watchAll=false",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -35,6 +38,7 @@
   "devDependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^14.4.3"
+    "@testing-library/user-event": "^14.4.3",
+    "gh-pages": "^6.0.0"
   }
 }
