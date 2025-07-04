@@ -20,10 +20,8 @@ jobs:
         node-version: '18'
         
     - name: Install dependencies
-      run: npm install
       run: npm install --save-dev gh-pages
-   ``` 
-
+   ```
       
     - name: Run tests
       run: npm test -- --coverage --watchAll=false
