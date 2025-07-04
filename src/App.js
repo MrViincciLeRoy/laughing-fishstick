@@ -16,32 +16,78 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <header className="App-header">
+    <div className="App" style={{ textAlign: 'center', padding: '20px' }}>
+      <header style={{ backgroundColor: '#282c34', padding: '20px', color: 'white' }}>
         <h1>GitHub Actions React Test App</h1>
       </header>
       
-      <div className="counter-container">
+      <div style={{ 
+        margin: '20px 0', 
+        padding: '20px', 
+        border: '1px solid #ddd', 
+        borderRadius: '8px', 
+        backgroundColor: '#f9f9f9' 
+      }}>
         <h2>Simple Counter App</h2>
-        <div className="counter-display">
+        <div style={{ 
+          fontSize: '24px', 
+          fontWeight: 'bold', 
+          margin: '20px 0', 
+          color: '#333' 
+        }}>
           Current count: {count}
         </div>
-        <div className="counter-buttons">
+        <div style={{ 
+          display: 'flex', 
+          gap: '10px', 
+          justifyContent: 'center', 
+          flexWrap: 'wrap' 
+        }}>
           <button 
-            className="counter-button bg-green-500" 
+            className="bg-green-500" 
             onClick={increase}
+            style={{
+              padding: '10px 20px',
+              border: 'none',
+              borderRadius: '4px',
+              cursor: 'pointer',
+              fontSize: '16px',
+              fontWeight: 'bold',
+              color: 'white',
+              backgroundColor: '#10b981'
+            }}
           >
             Increase
           </button>
           <button 
-            className="counter-button bg-red-500" 
+            className="bg-red-500" 
             onClick={decrease}
+            style={{
+              padding: '10px 20px',
+              border: 'none',
+              borderRadius: '4px',
+              cursor: 'pointer',
+              fontSize: '16px',
+              fontWeight: 'bold',
+              color: 'white',
+              backgroundColor: '#ef4444'
+            }}
           >
             Decrease
           </button>
           <button 
-            className="counter-button bg-gray-500" 
+            className="bg-gray-500" 
             onClick={reset}
+            style={{
+              padding: '10px 20px',
+              border: 'none',
+              borderRadius: '4px',
+              cursor: 'pointer',
+              fontSize: '16px',
+              fontWeight: 'bold',
+              color: 'white',
+              backgroundColor: '#6b7280'
+            }}
           >
             Reset
           </button>
