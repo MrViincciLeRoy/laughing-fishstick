@@ -6,32 +6,38 @@ on:
   pull_request:
     branches: [ main ]
 
+# Add these permissions
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
   test:
     runs-on: ubuntu-latest
-    
+
     strategy:
       matrix:
         node-version: [18.x, 20.x]
-    
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
-    
+
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v4
       with:
         node-version: ${{ matrix.node-version }}
-    
+
     - name: Install dependencies
       run: npm install
-    
+
     - name: Run linter
       run: npm run lint --if-present
-    
+
     - name: Run tests
       run: npm run test:ci
-    
+
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v4
       with:
@@ -43,22 +49,22 @@ jobs:
   build:
     runs-on: ubuntu-latest
     needs: test
-    
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
-    
+
     - name: Use Node.js 20.x
       uses: actions/setup-node@v4
       with:
         node-version: 20.x
-    
+
     - name: Install dependencies
       run: npm install
-    
+
     - name: Build application
       run: npm run build
-    
+
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4
       with:
@@ -70,16 +76,22 @@ jobs:
     needs: [test, build]
     if: github.ref == 'refs/heads/main'
     
+    # Add specific permissions for the deploy job
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
-    
+
     - name: Download build artifacts
       uses: actions/download-artifact@v4
       with:
         name: build-files
         path: build/
-    
+
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v4
       with:
