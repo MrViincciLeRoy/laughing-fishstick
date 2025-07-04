@@ -30,7 +30,6 @@ jobs:
       
     - name: Build project
       run: npm run build
-      run: npm run deploy
       
     - name: Deploy to GitHub Pages
       if: github.ref == 'refs/heads/main'
